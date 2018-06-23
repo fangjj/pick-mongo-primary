@@ -1,6 +1,6 @@
 {
   "name": "pick-mongo-primary-one",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Get MongoDB Shell command to PRIMARY from the Mongo URL",
   "dependencies": {
     "mongodb": "^2.2.24",

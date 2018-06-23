@@ -9,14 +9,35 @@ var TIMEOUT = process.argv[3] || process.env.TIMEOUT;
 if(!MONGO_URL) {
   console.error("MONGO_URL is not provided either using first paramater or as a env. variable");
   process.exit(1);
+} 
+
+var parsedMongoURL = mongodbUrl.parse(MONGO_URL);
+  
+if (parsedMongoURL && parsedMongoURL.hosts.length === 1) {
+  // only one mongo
+  var host = mongoURLObject.hosts[0];
+  var primary = host.host + ':' + host.port;
+  
+  var mongoShellConfig = util.format("%s/%s", 
+    primary, parsedMongoURL.database
+  );
+
+  if(parsedMongoURL.username) {
+    mongoShellConfig = util.format("%s -u %s -p %s", 
+      mongoShellConfig, parsedMongoURL.username, parsedMongoURL.password
+    );
+  }
+  console.log(mongoShellConfig);
+  process.exit(0);
 }
+
+
+
 
 pickMongoPrimary(MONGO_URL, {timeout: TIMEOUT}, function(err, primary) {
   if(err) {
     throw err;
   } else {
-    var parsedMongoURL = mongodbUrl.parse(MONGO_URL);
-
     var mongoShellConfig = util.format("%s/%s", 
       primary, parsedMongoURL.database
     );
