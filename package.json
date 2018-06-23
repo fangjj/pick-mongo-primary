@@ -1,6 +1,6 @@
 {
-  "name": "pick-mongo-primary",
-  "version": "0.5.0",
+  "name": "pick-mongo-primary-one",
+  "version": "0.5.1",
   "description": "Get MongoDB Shell command to PRIMARY from the Mongo URL",
   "dependencies": {
     "mongodb": "^2.2.24",
@@ -10,9 +10,9 @@
   "bin": {
     "pick-mongo-primary": "./bin/pick-mongo-primary"
   },
-  "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
+  "author": "Arunoda Susiripala <fangjimjim@qq.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/arunoda/pick-mongo-primary.git"
+    "url": "https://github.com/fangjj/pick-mongo-primary"
   }
 }
