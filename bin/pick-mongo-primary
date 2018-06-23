@@ -15,7 +15,7 @@ var parsedMongoURL = mongodbUrl.parse(MONGO_URL);
   
 if (parsedMongoURL && parsedMongoURL.hosts.length === 1) {
   // only one mongo
-  var host = mongoURLObject.hosts[0];
+  var host = parsedMongoURL.hosts[0];
   var primary = host.host + ':' + host.port;
   
   var mongoShellConfig = util.format("%s/%s", 
